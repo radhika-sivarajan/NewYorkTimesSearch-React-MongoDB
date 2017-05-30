@@ -1,21 +1,49 @@
 var React = require("react");
 
-var Header = require("./panels/Header");
-var Footer = require("./panels/Footer");
-var Search = require("./panels/Search");
-var Result = require("./panels/Result");
-var Saved = require("./panels/Saved");
+var nytSearchQuery = require("../nytAPI.js");
+
+var Header = require("./sections/Header");
+var Footer = require("./sections/Footer");
+var Search = require("./sections/Search");
+var Result = require("./sections/Result");
+var Saved = require("./sections/Saved");
 
 var Main = React.createClass({
+  getInitialState: function () {
+    return {
+      topic: "",
+      startYear: "",
+      endYear: "",
+      resultArticles: [],
+      savedArticles: []
+    }
+  },
+  setSearchTerms: function (newSearchTerm, newStartYear, newEndYear) {
+    this.setState({
+      topic: newSearchTerm,
+      startYear: newStartYear,
+      endYear: newEndYear
+    });
+  },
+  componentDidUpdate: function (prevProps, prevState) {
+    if (prevState.topic != this.state.topic) {
+      nytSearchQuery.searchArticle(this.state.topic, this.state.startYear, this.state.endYear)
+        .then((newResult) => {
+          this.setState({
+            resultArticles: newResult
+          });
+        });
+    }
+  },
   render: function () {
     return (
       <div className="container page">
         <Header />
         <div className="row">
-          <Search />
+          <Search updateSearch={this.setSearchTerms} />
         </div>
         <div className="row">
-          <Result />
+          <Result resultArticles={this.state.resultArticles} />
           <Saved />
         </div>
         <Footer />

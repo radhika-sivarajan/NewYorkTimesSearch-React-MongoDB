@@ -16,14 +16,21 @@ var nytHelper = {
                     if (NYTRecords.docs[i].headline.main) {
                         var NYTResultObject = {};
                         NYTResultObject.title = NYTRecords.docs[i].headline.main;
-                        NYTResultObject.author = NYTRecords.docs[i].byline.original;
-                        NYTResultObject.publishDate = NYTRecords.docs[i].pub_date;
-                        NYTResultObject.snippet = NYTRecords.docs[i].snippet;
-                        NYTResultObject.link = NYTRecords.docs[i].web_url;
+                        if (NYTRecords.docs[i].byline && NYTRecords.docs[i].byline.original) {
+                            NYTResultObject.author = NYTRecords.docs[i].byline.original;
+                        }
+                        if (NYTRecords.docs[i].pub_date) {
+                            NYTResultObject.publish_date = NYTRecords.docs[i].pub_date;
+                        }
+                        if (NYTRecords.docs[i].snippet) {
+                            NYTResultObject.snippet = NYTRecords.docs[i].snippet;
+                        }
+                        if (NYTRecords.docs[i].web_url) {
+                            NYTResultObject.link = NYTRecords.docs[i].web_url;
+                        }
                         NYTResultArray.push(NYTResultObject);
                     }
                 }
-                console.log(NYTResultArray);
                 return NYTResultArray;
             }
         });

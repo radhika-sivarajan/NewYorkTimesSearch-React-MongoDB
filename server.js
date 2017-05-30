@@ -23,6 +23,3 @@ if (process.env.NODE_ENV === 'production') {
 var db = mongoose.connection;
 db.on("error", function(error) { console.log("Mongoose Error: ", error); });
 db.once("open", function() { console.log("Mongoose connection successful."); });
-
-var nytSearchQuery = require("./app/nytAPI.js");
-nytSearchQuery.searchArticle("facebook","2010","2017");
