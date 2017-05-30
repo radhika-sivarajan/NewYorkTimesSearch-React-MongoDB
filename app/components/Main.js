@@ -44,7 +44,7 @@ var Main = React.createClass({
         </div>
         <div className="row">
           <Result resultArticles={this.state.resultArticles} />
-          <Saved />
+          <Saved savedArticles={this.state.savedArticles} />
         </div>
         <Footer />
       </div>
