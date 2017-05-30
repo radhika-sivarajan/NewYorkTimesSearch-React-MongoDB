@@ -1,0 +1,73 @@
+@font-face {
+    font-family: "NeyYork";
+    src: url(NeyYork.ttf) format("truetype");
+}
+
+.page {
+    border: 1px solid #ddd;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.heading h1 {
+    font-family: "NeyYork", sans-serif;
+    color: white;
+    font-size: 60px;
+    text-shadow: 0 1px 1px #bbb, 0 2px 0 #999, 0 3px 0 #888, 0 9px 7px #504c4c;
+}
+
+.heading {
+    background-color: #093152;
+    margin: 0px -41px 10px;
+    padding: 8px;
+    border-bottom: 5px solid #777;
+}
+
+.red,
+.error {
+    color: red;
+}
+
+.error,
+.result-section {
+    display: none;
+}
+
+.headline {
+    line-height: 30px;
+}
+
+.message,
+.snippet {
+    font-style: italic;
+}
+
+.view:hover {
+    background-color: #0d4c0d;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+}
+
+.search-section,
+.result-section {
+    border: 1px solid #ddd;
+    padding: 20px 30px;
+    margin-top: 30px;
+}
+
+.search-heading,
+.result-heading {
+    padding: 15px 0;
+    font-size: 120%;
+    color: #fff;
+    margin: -21px -31px 21px -31px;
+    background: #dc5353;
+}
+
+div .footer {
+    background-color: #474a50;
+    border-top: 4px solid #777;
+    margin: 30px -41px 0px;
+    padding: 20px;
+    color: white;
+}
