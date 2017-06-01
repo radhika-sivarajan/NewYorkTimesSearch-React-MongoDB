@@ -4,7 +4,7 @@ var helpers = require("../../utils/helper.js");
 var Saved = React.createClass({
     handleClick: function (articleID, event) {
         event.preventDefault();
-        helpers.deleteArticle(articleID).then(function(){
+        helpers.deleteArticle(articleID).then(function () {
             console.log("Deleted from db");
         });
     },

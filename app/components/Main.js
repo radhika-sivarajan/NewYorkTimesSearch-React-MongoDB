@@ -4,7 +4,7 @@ var helpers = require("../utils/helper.js");
 
 var Header = require("./sections/Header");
 var Footer = require("./sections/Footer");
-var Search = require("./sections/Search");
+var SearchForm = require("./sections/SearchForm");
 var Result = require("./sections/Result");
 var Saved = require("./sections/Saved");
 
@@ -19,11 +19,11 @@ var Main = React.createClass({
     }
   },
   componentDidMount: function () {
-     helpers.getSavedArticle().then(function (dbArticles) {
-        this.setState({
-          savedArticles: dbArticles.data
-        });
-      }.bind(this));
+    helpers.getSavedArticle().then(function (dbArticles) {
+      this.setState({
+        savedArticles: dbArticles.data
+      });
+    }.bind(this));
   },
   componentDidUpdate: function (prevProps, prevState) {
     if ((prevState.topic != this.state.topic) || (prevState.startYear != this.state.startYear) || (prevState.endYear != this.state.endYear)) {
@@ -47,7 +47,7 @@ var Main = React.createClass({
       <div className="container page">
         <Header />
         <div className="row">
-          <Search updateSearch={this.setSearchTerms} />
+          <SearchForm updateSearch={this.setSearchTerms} />
           <Result resultArticles={this.state.resultArticles} />
           <Saved savedArticles={this.state.savedArticles} />
         </div>
