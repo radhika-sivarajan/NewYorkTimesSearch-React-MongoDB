@@ -1,6 +1,6 @@
 var React = require("react");
 
-var nytSearchQuery = require("../nytAPI.js");
+var helpers = require("../utils/helper.js");
 
 var Header = require("./sections/Header");
 var Footer = require("./sections/Footer");
@@ -27,7 +27,7 @@ var Main = React.createClass({
   },
   componentDidUpdate: function (prevProps, prevState) {
     if ((prevState.topic != this.state.topic) || (prevState.startYear != this.state.startYear) || (prevState.endYear != this.state.endYear)) {
-      nytSearchQuery.searchArticle(this.state.topic, this.state.startYear, this.state.endYear)
+      helpers.searchArticle(this.state.topic, this.state.startYear, this.state.endYear)
         .then((newResult) => {
           this.setState({
             resultArticles: newResult

@@ -12,13 +12,9 @@ var Search = React.createClass({
     },
     render: function () {
         return (
-            <div className="col-md-6 col-md-offset-3">
-                <div className="panel panel-danger">
-                    <div className="panel-heading text-center">
-                        <h3 className="panel-title" > Search </h3>
-                    </div>
-                    <div className="panel-body">
-                        <form>
+            <div className="col-md-8 col-md-offset-2">
+                <div className="search-panel">
+                        <form className="form-inline text-center">
                             <div className="form-group">
                                 <input type="text" className="form-control" id="topic" onChange={this.handleChange} placeholder="Search term" required />
                             </div>
@@ -30,7 +26,6 @@ var Search = React.createClass({
                             </div>
                             <button type="submit" className="btn btn-danger" onClick={this.handleClick}>Search</button>
                         </form>
-                    </div >
                 </div>
             </div>
         );

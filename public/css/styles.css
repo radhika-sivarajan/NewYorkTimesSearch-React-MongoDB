@@ -36,6 +36,19 @@
     border-right-width: 0px;
 }
 
+.mini-button {
+    padding: 1px 10px;
+}
+
+.form-inline>* {
+    margin-right: 5px;
+}
+
+.search-panel {
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
 .red,
 .error {
     color: red;
