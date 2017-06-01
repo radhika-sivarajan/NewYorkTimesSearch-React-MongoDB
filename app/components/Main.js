@@ -26,7 +26,7 @@ var Main = React.createClass({
     });
   },
   componentDidUpdate: function (prevProps, prevState) {
-    if (prevState.topic != this.state.topic) {
+    if ((prevState.topic != this.state.topic) || (prevState.startYear != this.state.startYear) || (prevState.endYear != this.state.endYear)) {
       nytSearchQuery.searchArticle(this.state.topic, this.state.startYear, this.state.endYear)
         .then((newResult) => {
           this.setState({

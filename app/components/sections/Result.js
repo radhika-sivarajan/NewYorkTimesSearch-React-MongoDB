@@ -1,4 +1,6 @@
 var React = require("react");
+
+
 var Result = React.createClass({
     getInitialState: function () {
         return {
@@ -6,24 +8,34 @@ var Result = React.createClass({
         }
     },
     componentWillReceiveProps: function (updatedProps) {
-        var myResults = updatedProps.resultArticles.map(function (article, i) {
-            return (
-                <div className="list-group-item" key={i}>
-                    <a href={article.link} target="_blank">{article.title}</a>
-                    <br />{article.author}
-                    <br />{article.publish_date}
-                    <br />Snippet: {article.snippet}
-                </div>
-            )
-        });
-        this.setState({ viewResult: myResults });
+        if (updatedProps.resultArticles !== undefined) {
+            var myResults = updatedProps.resultArticles.map(function (article, i) {
+                return (
+                    <li className="list-group-item" key={i}>
+                        <strong> {i+1}. {article.title}</strong>
+                        <br /> {article.author}
+                        <br />Published date : {article.publish_date}
+                        <a href={article.link} target="_blank"> View </a>
+                    </li>
+                )
+            });
+            this.setState({ viewResult: myResults });
+        } else {
+            var myResults = function () {
+                return (
+                    // <img src=".../public/images/no-result.png" alt="No results"/>
+                    <p>No result</p>
+                )
+            };
+            this.setState({ viewResult: myResults });
+        }
     },
     render: function () {
-        if (this.props.resultArticles.length === 0) {
+        if (this.props.resultArticles && this.props.resultArticles.length === 0) {
             return (
                 <div className="col-md-6">
-                    <div className="panel panel-default" >
-                        <div className="panel-heading text-center" >
+                    <div className="panel panel-warning" >
+                        <div className="panel-heading" >
                             <h3 className="panel-title" > Results </h3>
                         </div>
                         <div className="panel-body text-center" >
@@ -35,15 +47,14 @@ var Result = React.createClass({
         } else {
             return (
                 <div className="col-md-6">
-                    <div className="panel-group">
-                        <div className="panel panel-default">
-                            <div className="panel-heading text-center">
-                                <h4 className="panel-title">Results</h4><br/>
-                                <a data-toggle="collapse" href="#articles"> .... </a>
-                            </div>
-                            <div id="articles" className="panel-collapse collapse">
-                                <div className="panel-body">{this.state.viewResult}</div>
-                            </div>
+                    <div className="panel panel-warning">
+                        <div className="panel-heading">
+                            <h3 className="panel-title" > Results </h3>
+                        </div>
+                        <div className="panel-body">
+                            <ul className="list-group article-list">
+                                {this.state.viewResult}
+                            </ul>
                         </div>
                     </div>
                 </div>

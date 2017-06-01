@@ -23,6 +23,19 @@
     border-bottom: 5px solid #777;
 }
 
+.article-list .list-group-item:first-child {
+    border-top-width: 0px;
+}
+
+.article-list .list-group-item:last-child {
+    border-bottom-width: 0px;
+}
+
+.article-list .list-group-item {
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+
 .red,
 .error {
     color: red;
@@ -67,7 +80,7 @@
 div .footer {
     background-color: #474a50;
     border-top: 4px solid #777;
-    margin: 30px -41px 0px;
+    margin: 0px -41px 0px;
     padding: 20px;
     color: white;
 }
