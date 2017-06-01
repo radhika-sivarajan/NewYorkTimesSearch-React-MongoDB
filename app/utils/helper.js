@@ -34,6 +34,26 @@ var nytHelper = {
                 return NYTResultArray;
             }
         });
+    },
+    saveArticle: function (title, author, publish_date, snippet, link) {
+        var newArticle = {
+            title: title,
+            author: author,
+            published_date: publish_date,
+            snippet: snippet,
+            link: link
+        };
+        return axios.post("/save-article", newArticle);
+    },
+    getSavedArticle: function () {
+        return axios.get("/saved-articles");
+    },
+    deleteArticle: function (articleID) {
+        return axios.delete("/delete-article", {
+            params: {
+                'id': articleID
+            }
+        });
     }
 }
 

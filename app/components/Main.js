@@ -18,12 +18,12 @@ var Main = React.createClass({
       savedArticles: []
     }
   },
-  setSearchTerms: function (newSearchTerm, newStartYear, newEndYear) {
-    this.setState({
-      topic: newSearchTerm,
-      startYear: newStartYear,
-      endYear: newEndYear
-    });
+  componentDidMount: function () {
+     helpers.getSavedArticle().then(function (dbArticles) {
+        this.setState({
+          savedArticles: dbArticles.data
+        });
+      }.bind(this));
   },
   componentDidUpdate: function (prevProps, prevState) {
     if ((prevState.topic != this.state.topic) || (prevState.startYear != this.state.startYear) || (prevState.endYear != this.state.endYear)) {
@@ -34,6 +34,13 @@ var Main = React.createClass({
           });
         });
     }
+  },
+  setSearchTerms: function (newSearchTerm, newStartYear, newEndYear) {
+    this.setState({
+      topic: newSearchTerm,
+      startYear: newStartYear,
+      endYear: newEndYear
+    });
   },
   render: function () {
     return (

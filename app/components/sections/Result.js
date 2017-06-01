@@ -1,6 +1,13 @@
 var React = require("react");
+var helpers = require("../../utils/helper.js");
 
 var Result = React.createClass({
+    handleClick: function (article, event) {
+        event.preventDefault();
+        helpers.saveArticle(article.title, article.author, article.publish_date, article.snippet, article.link).then(function () {
+            console.log("Saved to db");
+        });
+    },
     render: function () {
         if (this.props.resultArticles && this.props.resultArticles.length === 0) {
             return (
@@ -16,21 +23,21 @@ var Result = React.createClass({
                 </div>
             );
         } else {
-            if(this.props.resultArticles !== undefined){
-                var articles = this.props.resultArticles.map(function(article, i){
-                    return(
+            if (this.props.resultArticles !== undefined) {
+                var articles = this.props.resultArticles.map(function (article, i) {
+                    return (
                         <li className="list-group-item" key={i}>
-                            <strong>{i+1}. {article.title}</strong> 
+                            <strong>{i + 1}. {article.title}</strong>
                             <br /><small><i>{article.author}</i></small>
                             <br />Published date : {article.publish_date}
-                            <div className="text-right"> 
+                            <div className="text-right">
                                 <a href={article.link} target="_blank"> <button type="button" className="btn btn-warning btn-sm mini-button">View</button> </a>
-                                <button type="button" className="btn btn-success btn-sm mini-button">Save</button>
+                                <button type="button" className="btn btn-success btn-sm mini-button" onClick={this.handleClick.bind(this, article)}>Save</button>
                             </div>
                         </li>
                     )
                 }.bind(this));
-            }else{
+            } else {
                 var articles = <div className="text-center"> SORRY !! No results</div>;
             }
         }
