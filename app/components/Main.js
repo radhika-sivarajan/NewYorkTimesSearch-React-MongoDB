@@ -48,8 +48,6 @@ var Main = React.createClass({
         <Header />
         <div className="row">
           <Search updateSearch={this.setSearchTerms} />
-        </div>
-        <div className="row">
           <Result resultArticles={this.state.resultArticles} />
           <Saved savedArticles={this.state.savedArticles} />
         </div>
