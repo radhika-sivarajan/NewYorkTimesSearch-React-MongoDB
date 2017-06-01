@@ -42,14 +42,17 @@ var Main = React.createClass({
       endYear: newEndYear
     });
   },
+  resetSavedResults: function (newData) {
+    this.setState({ savedArticles: newData });
+  },
   render: function () {
     return (
       <div className="container page">
         <Header />
         <div className="row">
           <SearchForm updateSearch={this.setSearchTerms} />
-          <Result resultArticles={this.state.resultArticles} />
-          <Saved savedArticles={this.state.savedArticles} />
+          <Result resultArticles={this.state.resultArticles} resetSaved={this.resetSavedResults}/>
+          <Saved savedArticles={this.state.savedArticles} resetSaved={this.resetSavedResults}/>
         </div>
         <Footer />
       </div>

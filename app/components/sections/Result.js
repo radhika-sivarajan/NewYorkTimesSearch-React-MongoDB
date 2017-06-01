@@ -5,8 +5,11 @@ var Result = React.createClass({
     handleClick: function (article, event) {
         event.preventDefault();
         helpers.saveArticle(article.title, article.author, article.publish_date, article.snippet, article.link).then(function () {
-            console.log("Saved to db");
-        });
+            helpers.getSavedArticle().then(function (dbArticles) {
+                this.props.resetSaved(dbArticles.data);
+                console.log("Saved to db");
+            }.bind(this));
+        }.bind(this));
     },
     render: function () {
         if (this.props.resultArticles && this.props.resultArticles.length === 0) {

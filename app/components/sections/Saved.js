@@ -5,8 +5,11 @@ var Saved = React.createClass({
     handleClick: function (articleID, event) {
         event.preventDefault();
         helpers.deleteArticle(articleID).then(function () {
-            console.log("Deleted from db");
-        });
+            helpers.getSavedArticle().then(function (dbArticles) {
+                this.props.resetSaved(dbArticles.data);
+                console.log("Deleted from db");
+            }.bind(this));
+        }.bind(this));
     },
     render: function () {
         if (this.props.savedArticles && this.props.savedArticles.length === 0) {
