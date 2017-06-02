@@ -6,7 +6,7 @@ var Saved = React.createClass({
         event.preventDefault();
         helpers.deleteArticle(articleID).then(function () {
             helpers.getSavedArticle().then(function (dbArticles) {
-                var message = <p className="red">Article deleted</p>;
+                var message = <p className="red">Article deleted from the database</p>;
                 this.props.resetSaved(dbArticles.data, message);
                 console.log("Deleted from db");
             }.bind(this));
