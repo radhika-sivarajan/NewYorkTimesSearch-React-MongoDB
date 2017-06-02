@@ -45,49 +45,16 @@
 }
 
 .search-panel {
-    padding-top: 20px;
-    padding-bottom: 30px;
+    padding-top: 15px;
+    padding-bottom: 20px;
 }
 
-.red,
-.error {
+.red {
     color: red;
 }
 
-.error,
-.result-section {
-    display: none;
-}
-
-.headline {
-    line-height: 30px;
-}
-
-.message,
-.snippet {
-    font-style: italic;
-}
-
-.view:hover {
-    background-color: #0d4c0d;
-    cursor: pointer;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
-}
-
-.search-section,
-.result-section {
-    border: 1px solid #ddd;
-    padding: 20px 30px;
-    margin-top: 30px;
-}
-
-.search-heading,
-.result-heading {
-    padding: 15px 0;
-    font-size: 120%;
-    color: #fff;
-    margin: -21px -31px 21px -31px;
-    background: #dc5353;
+.green {
+    color: green;
 }
 
 div .footer {

@@ -6,7 +6,8 @@ var Result = React.createClass({
         event.preventDefault();
         helpers.saveArticle(article.title, article.author, article.publish_date, article.snippet, article.link).then(function () {
             helpers.getSavedArticle().then(function (dbArticles) {
-                this.props.resetSaved(dbArticles.data);
+                var message = <p className="green">Article saved</p>;
+                this.props.resetSaved(dbArticles.data, message);
                 console.log("Saved to db");
             }.bind(this));
         }.bind(this));

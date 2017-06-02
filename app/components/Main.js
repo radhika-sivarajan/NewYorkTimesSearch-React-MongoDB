@@ -1,4 +1,5 @@
 var React = require("react");
+var NotificationSystem = require('react-notification-system');
 
 var helpers = require("../utils/helper.js");
 
@@ -18,20 +19,20 @@ var Main = React.createClass({
       savedArticles: []
     }
   },
+  _notificationSystem: null,
   componentDidMount: function () {
     helpers.getSavedArticle().then(function (dbArticles) {
       this.setState({
         savedArticles: dbArticles.data
       });
     }.bind(this));
+    this._notificationSystem = this.refs.notificationSystem;
   },
   componentDidUpdate: function (prevProps, prevState) {
     if ((prevState.topic != this.state.topic) || (prevState.startYear != this.state.startYear) || (prevState.endYear != this.state.endYear)) {
       helpers.searchArticle(this.state.topic, this.state.startYear, this.state.endYear)
         .then((newResult) => {
-          this.setState({
-            resultArticles: newResult
-          });
+          this.setState({ resultArticles: newResult });
         });
     }
   },
@@ -42,8 +43,12 @@ var Main = React.createClass({
       endYear: newEndYear
     });
   },
-  resetSavedResults: function (newData) {
+  resetSavedResults: function (newData, message) {
     this.setState({ savedArticles: newData });
+    this._notificationSystem.addNotification({
+      message: message,
+      level: 'info'
+    });
   },
   render: function () {
     return (
@@ -51,8 +56,9 @@ var Main = React.createClass({
         <Header />
         <div className="row">
           <SearchForm updateSearch={this.setSearchTerms} />
-          <Result resultArticles={this.state.resultArticles} resetSaved={this.resetSavedResults}/>
-          <Saved savedArticles={this.state.savedArticles} resetSaved={this.resetSavedResults}/>
+          <NotificationSystem ref="notificationSystem" />
+          <Result resultArticles={this.state.resultArticles} resetSaved={this.resetSavedResults} />
+          <Saved savedArticles={this.state.savedArticles} resetSaved={this.resetSavedResults} />
         </div>
         <Footer />
       </div>
