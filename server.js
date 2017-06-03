@@ -10,7 +10,7 @@ var News = require("./models/news.js");
 
 var PORT = process.env.PORT || 3000;
 var app = express();
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'production';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
