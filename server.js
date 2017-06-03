@@ -1,9 +1,11 @@
+// Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var Promise = require("bluebird");
 
+// Model
 var News = require("./models/news.js");
 
 var PORT = process.env.PORT || 3000;
@@ -16,10 +18,11 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(express.static("public"));
 
+// MongoDB connection
 mongoose.Promise = Promise;
 if (process.env.NODE_ENV === 'production') {
     console.log('node env is', process.env.NODE_ENV);
-    mongoose.connect('mongodb://radhika:radhika@ds149481.mlab.com:49481/heroku_309mccdx');
+    mongoose.connect('mongodb://heroku_z4c48c2t:q0mhgel9aph8nc77aqh2bgrip2@ds161021.mlab.com:61021/heroku_z4c48c2t');
 } else {
     console.log('node env is', process.env.NODE_ENV);
     mongoose.connect('mongodb://localhost/nyt-search');
@@ -32,6 +35,7 @@ app.listen(PORT, function () {
     console.log('Running on port: ' + PORT);
 });
 
+// Routes for get and post
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/public/index.html");
 });
