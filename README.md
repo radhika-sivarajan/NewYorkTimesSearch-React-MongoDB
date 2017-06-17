@@ -23,7 +23,6 @@ NPM packages
 
 1. `body-parser` (Node.js body parsing middleware)
 1. `express` (Web framework)
-1. `express-handlebars` (Handlebars view engine for Express)
 1. `morgan` (HTTP request logger middleware)
 1. `mongoose` (Mongoose MongoDB ODM)
 1. `bluebird` (Fully featured promise library )
