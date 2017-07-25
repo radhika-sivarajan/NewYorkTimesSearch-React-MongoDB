@@ -1,12 +1,16 @@
 # New York Times Search (MERN)
 
- React-based rendition of the New York Times Article Search application. Allows users to save articles to the database (MongoDB).
+React-based rendition of the New York Times Article Search application. Allows users to save articles to the database (MongoDB).
 
 ## Table of Contents
 
+- [Application](#application)
 - [Technologies used](#technologies-used)
 - [Dependencies](#dependencies)
 - [To Install on local machine](#to-install-on-local-machine)
+
+## Application
+[https://nyt-search-mern.herokuapp.com/](https://nyt-search-mern.herokuapp.com/)
 
 ## Technologies used
 * NodeJs
